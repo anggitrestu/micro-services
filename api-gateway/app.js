@@ -14,6 +14,7 @@ const refreshTokensRouter = require('./routes/refreshTokens');
 const mentorRouter = require('./routes/mentors');
 const chapterRouter = require('./routes/chapters');
 const lessonRouter = require('./routes/lessons');
+const reviewRouter = require('./routes/reviews');
 const imageCourseRouter = require('./routes/imageCourses');
 const myCourseRouter = require('./routes/myCourses');
 
@@ -37,6 +38,7 @@ app.use('/refresh-tokens', refreshTokensRouter);
 app.use('/mentors', verifyToken, mentorRouter);
 app.use('/chapters', verifyToken, chapterRouter);
 app.use('/lessons', verifyToken, lessonRouter);
+app.use('/reviews', verifyToken, reviewRouter);
 app.use('/image-courses', verifyToken, imageCourseRouter);
 app.use('/my-courses', verifyToken, myCourseRouter);
 module.exports = app;
