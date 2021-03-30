@@ -30,7 +30,7 @@ class CourseController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => $courses->paginate(10)
+            'data' => $courses->paginate(10)
         ]);
     }
 
@@ -39,7 +39,7 @@ class CourseController extends Controller
         $rules = [
             'name' => 'required|string',
             'certificate' => 'required|boolean',
-            'thumbnail' => 'required|url',
+            'thumbnail' => 'url',
             'type' => 'required|in:free,premium',
             'status' => 'required|in:draft,published',
             'price' => 'integer',

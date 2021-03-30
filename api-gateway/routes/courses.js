@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
-const { APP_NAME } = process.env;
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('courses');
-});
+const express = require('express');
+const router = express.Router();
+const courseHandler = require('./handler/courses');
+const verifyToken = require('../middlewares/verifyToken');
+
+router.post('/', verifyToken, courseHandler.create);
+router.put('/:id', verifyToken, courseHandler.update);
+router.delete('/:id', verifyToken, courseHandler.destroy);
+
+router.get('/', courseHandler.getAll);
+router.get('/:id', courseHandler.get);
 
 module.exports = router;
