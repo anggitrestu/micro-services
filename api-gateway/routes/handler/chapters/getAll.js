@@ -4,8 +4,12 @@ const api = apiAdapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
   try {
-    const mentors = await api.get('/api/mentors');
-    return res.json(mentors.data);
+    const chapters = await api.get('/api/chapters', {
+      params: {
+        ...req.query,
+      },
+    });
+    return res.json(chapters.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
       return res
